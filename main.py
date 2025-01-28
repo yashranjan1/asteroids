@@ -27,7 +27,7 @@ def main():
     # create a player
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
 
-    asteroids = AsteroidField()
+    asteroidfield = AsteroidField()
     
 
     while True:
@@ -46,6 +46,11 @@ def main():
         # draw all obj
         for obj in updatable:
             obj.update(dt)
+
+        for asteroid in asteroids:
+            if asteroid.hasCollidedWith(player):
+                print("Game over!")
+                break
         
         for obj in drawable:
             obj.draw(screen)
