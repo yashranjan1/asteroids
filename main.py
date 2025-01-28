@@ -46,6 +46,11 @@ def main():
             obj.update(dt)
 
         for asteroid in asteroids:
+            for shot in shots:
+                if asteroid.hasCollidedWith(shot):
+                    asteroid.split()
+
+        for asteroid in asteroids:
             if asteroid.hasCollidedWith(player):
                 print("Game over!")
                 exit()
